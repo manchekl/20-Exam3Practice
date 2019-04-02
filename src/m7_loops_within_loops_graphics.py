@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Krista Manche.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -35,7 +35,7 @@ import rosegraphics as rg
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_hourglass()
-    run_test_many_hourglasses()
+    #run_test_many_hourglasses()
 
 
 def run_test_hourglass():
@@ -102,6 +102,47 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # -------------------------------------------------------------------------
+
+    for k in range(n):
+        org_circle = rg.Circle(point, radius)
+        org_circle.fill_color = color
+        line = rg.Line(rg.Point(point.x + radius, point.y), rg.Point(point.x - radius, point.y))
+        org_circle.attach_to(window)
+        line.attach_to(window)
+        for s in range(k):
+            new_x=org_circle.center.x+s*org_circle.radius
+            new_y=org_circle.center.y+s*org_circle.radius
+            circle= rg.Circle(rg.Point(new_x,new_y),org_circle.radius)
+            circle.fill_color=color
+
+            circle.attach_to(window)
+            window.render()
+        for r in range(k):
+            new_x2=org_circle.center.x-r*org_circle.radius
+            new_y2=org_circle.center.y-r*org_circle.radius
+            circle= rg.Circle(rg.Point(new_x2,new_y2),org_circle.radius)
+            circle.fill_color=color
+
+            circle.attach_to(window)
+            window.render()
+        for n in range(k):
+            new_x=org_circle.center.x-n*org_circle.radius
+            new_y=org_circle.center.y+n*org_circle.radius
+            circle= rg.Circle(rg.Point(new_x,new_y),org_circle.radius)
+            circle.fill_color=color
+
+            circle.attach_to(window)
+            window.render()
+        for w in range(k):
+            new_x2=org_circle.center.x+w*org_circle.radius
+            new_y2=org_circle.center.y-w*org_circle.radius
+            circle= rg.Circle(rg.Point(new_x2,new_y2),org_circle.radius)
+            circle.fill_color=color
+
+            circle.attach_to(window)
+            window.render()
+
+
 
 
 def run_test_many_hourglasses():

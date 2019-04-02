@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Krista Manche.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -46,7 +46,7 @@ def main():
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
     ###########################################################################
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem3  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -135,6 +135,14 @@ def run_test_practice_problem3():
     # SUGGESTION: Ask an assistant to CHECK your tests to confirm
     #             that they are adequate tests!
     ###########################################################################
+    tests = [st.SimpleTestCase(practice_problem3,
+                               [-1, 4, 0.99],
+                               [0, 1, 7, 13]),
+             st.SimpleTestCase(practice_problem3,
+                               [1, 2, .33],
+                               [1,2])]
+    st.SimpleTestCase.run_tests('practice_problem3', tests)
+
 
 
 def practice_problem3(start, n, threshold):
@@ -217,6 +225,17 @@ def practice_problem3(start, n, threshold):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   < 15 minutes.
     ###########################################################################
+    seq=[]
+    count=start
+
+    while n>0:
+        if (math.sin(count)+ math.cos(count))>threshold:
+            seq=seq+[count]
+            n = n - 1
+        count=count+1
+
+    return seq
+
 
 
 # -----------------------------------------------------------------------------
